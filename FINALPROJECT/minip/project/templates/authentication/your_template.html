@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generated Questions</title>
+</head>
+<body>
+    <h1>Generated Questions</h1>
+    <form method="post" action="/finalsubmission">
+        {% csrf_token %}
+        <input type="hidden" name="total_rows" value="1">
+        <table border="1">
+            <tr>
+                <th>QUESTION</th>
+                <th>MODULE</th>
+                <th>TAXONOMY LEVEL</th>
+                <th>DIFFICULTY LEVEL</th>
+                <th>COURSE OUTCOME</th>
+                <th>Marks</th>
+                <th>Edit</th>
+            </tr>
+            {% for question in questions %}
+            <tr>
+                <td><input type="text" name="question_{{ forloop.counter }}" value="{{ question.question }}"></td>
+                <td>
+                    <select name="module_{{ forloop.counter }}">
+                        <option value=1 {% if question.Mod == 1 %}selected{% endif %}>Module 1</option>
+                        <option value=2 {% if question.Mod == 2 %}selected{% endif %}>Module 2</option>
+                        <option value=3 {% if question.Mod == 3 %}selected{% endif %}>Module 3</option>
+                        <option value=4 {% if question.Mod == 4 %}selected{% endif %}>Module 4</option>
+                        <option value=5 {% if question.Mod == 5 %}selected{% endif %}>Module 5</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="taxonomy_{{ forloop.counter }}">
+                        <option value="U" {% if question.taxonomy == 'U' %}selected{% endif %}>Understand</option>
+                        <option value="A" {% if question.taxonomy == 'A' %}selected{% endif %}>Apply</option>
+                        <option value="E" {% if question.taxonomy == 'E' %}selected{% endif %}>Evaluate</option>
+                        <option value="K" {% if question.taxonomy == 'K' %}selected{% endif %}>Knowledge</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="difficulty_level_{{ forloop.counter }}">
+                        <option value="E" {% if question.Diff == 'E' %}selected{% endif %}>Easy</option>
+                        <option value="M" {% if question.Diff == 'M' %}selected{% endif %}>Medium</option>
+                        <option value="D" {% if question.Diff == 'D' %}selected{% endif %}>Difficult</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="course_outcome_{{ forloop.counter }}">
+                        <option value="1" {% if question.CO == '1' %}selected{% endif %}>CO1</option>
+                        <option value="2" {% if question.CO == '2' %}selected{% endif %}>CO2</option>
+                        <option value="3" {% if question.CO == '3' %}selected{% endif %}>CO3</option>
+                    </select>
+                </td>
+                <td><input type="text" name="marks_{{ forloop.counter }}" value="{{ question.marks }}"></td>
+                
+            </tr>
+            {% endfor %}
+          
+           
+        </table>
+        <input type="text" name="document_id">
+        <input type="submit" name="save_changes" value="Save Changes & Submit">
+    </form>
+</body>
+</html>

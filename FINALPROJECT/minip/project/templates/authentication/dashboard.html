@@ -1,0 +1,373 @@
+{% load static %}
+<!DOCTYPE html>
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="{% static 'style3.css' %}">
+    <script src="https://kit.fontawesome.com/b5f405ef21.js" crossorigin="anonymous"></script> 
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>Faculty Dashboard</title> 
+   <!-- Include the Firebase JavaScript SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+<!-- Initialize the Firebase SDK with your Firebase project credentials -->
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyAB69oSg-KCnbUk_7VJ47DYs8StOEe-sgk",
+  authDomain: "mini-project-d6397.firebaseapp.com",
+  projectId: "mini-project-d6397",
+  databaseURL: "https://mini-project-d6397.firebaseio.com",
+  storageBucket: "mini-project-d6397.appspot.com",
+  messagingSenderId: "884557626904",
+  appId: "1:884557626904:web:20bef6101d09774a558d6d",
+  measurementId: "G-QCV2G30W9V"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+    
+</head>
+<body>
+    
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="{%static 'QGlogo.png'%}" alt="">
+            </div>
+
+            <span class="logo_name">QuesGen</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="index.html">
+                    <i class="uil uil-estate" title="view Dashboard"></i>
+                    <span class="link-name">Home</span>
+                </a></li>
+                <li><a href="/profile" title="view profile">
+                    <i class="uil uil-user"></i>
+                    <span class="link-name" >Profile</span>
+                </a></li>
+                <li><a href="/qbank" title="View Question Bank">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name" >Question Bank</span></a>
+                </a></li>
+                <li><a href="{%static 'Academic Calendar-S4S6-2023.pdf'%}" target="_blank">
+                    <i class="uil uil-calender" title="view Academic Calendar"></i>
+                    <span class="link-name" >Calendar</span>
+                </a></li>
+                
+                <li><a href="#" title="view Email notifications">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name" >Notifications</span>
+                </a></li>
+                <li><a href="select.html" title="Go back to select page">
+                    <i class="uil uil-share"></i>
+                    <span class="link-name" >Selection Page</span>
+                </a></li>
+                <li><a href="/add_questions" title="Add new question">
+                    <i class="uil uil-question"></i>
+                    <span class="link-name" >Add New Question</span>
+                </a></li>
+            </ul>
+            
+            <ul class="logout-mode">
+                <li><a href="signin.html">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name" title="log out" action="/signout">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Dark Mode</span>
+                </a>
+
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+
+
+            
+        </div>
+    </nav>
+
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+            <a href="#" class="profile-button">
+                <img src="{%static 'profile.png'%}" alt="">
+            </a>
+            
+             <div class="dropdown">
+                <button class="profile-button"> 
+                 <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                   <a href="#">Link 2</a>
+                  <a href="#">Link 3</a>
+               </div>
+             </div> 
+            </div>
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text">Dashboard</span>
+                </div>
+
+                <div class="boxes">
+                    <div class="box box1">
+                        <i class="uil uil-home"></i>
+                        <span class="text">Department</span>
+                        <span class="number" id="checkboxValue"></span>
+                    </div>
+                    <div class="box box2">
+                        <i class="uil uil-books"></i>
+                        <span class="text">Semester</span>
+                        <span class="number" id="dropdown1Value"></span>
+                    </div>
+                    <div class="box box3">
+                        <i class="uil uil-bag"></i>
+                        <span class="text">Course</span>
+                        <span class="number" id="dropdown2Value"></span>
+                        
+                    </div>
+                </div>
+            </div>
+            <form action="/question" method="post">
+                {% csrf_token %} 
+            <section class="tab1">
+                <div class="activity">   
+                    <div class="title">
+                        <i class="uil uil-clock-three"></i>
+                        <span class="text">Question Bank</span>
+                    </div>
+    
+                    <div class="activity-data">
+                        <div class="table-container">
+                            
+                            <table class="custom-table" id="questionTable">
+                                <tr>
+                                    <th>QUESTION</th>
+                                    <th>MODULE</th>
+                                    <th>TAXONOMY LEVEL</th>
+                                    <th>DIFFICULTY LEVEL</th>
+                                    <th>COURSE OUTCOME</th>
+                                    <th>Marks</th>
+                                    <th>Edit/Delete</th>
+                                </tr>
+                                <tr id="row-1">
+                                    <td>Q1</td>
+                                    <td>
+                                        <select name="module_1">
+                                            <option value=1>Module 1</option>
+                                            <option value=2>Module 2</option>
+                                            <option value=3>Module 3</option>
+                                            <option value=4>Module 4</option>
+                                            <option value=5>Module 5</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="taxonomy_1">
+                                            <option value="U">Understand</option>
+                                            <option value="A">Apply</option>
+                                            <option value="E">Evaluate</option>
+                                            <option value="K">Knowledge</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="difficulty_level_1">
+                                            <option value="E">Easy</option>
+                                            <option value="M">Medium</option>
+                                            <option value="D">Difficult</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="course_outcome_1">
+                                            <option value="1">CO1</option>
+                                            <option value="2">CO2</option>
+                                            <option value="3">CO3</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input name="marks_1" type="text" class="marks"  placeholder="Enter marks">
+                                      </td>
+                                    <td class="icons">
+                                        <button type="button" onclick="editRow(1)">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button type="button" onclick="deleteRow(1)">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr id="row-2">
+                                    <td>Q2</td>
+                                    <td>
+                                        <select name="module_2">
+                                            <option value=1>Module 1</option>
+                                            <option value=2>Module 2</option>
+                                            <option value=3>Module 3</option>
+                                            <option value=4>Module 4</option>
+                                            <option value=5>Module 5</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="taxonomy_2">
+                                            <option value="U">Understand</option>
+                                            <option value="A">Apply</option>
+                                            <option value="E">Evaluate</option>
+                                            <option value="K">Knowledge</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="difficulty_level_2">
+                                            <option value="E">Easy</option>
+                                            <option value="M">Medium</option>
+                                            <option value="D">Difficult</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="course_outcome_2">
+                                            <option value="1">CO1</option>
+                                            <option value="2">CO2</option>
+                                            <option value="3">CO3</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input name="marks_2"type="text" class="marks"  placeholder="Enter marks">
+                                      </td>
+                                    <td class="icons">
+                                        <button type="button" onclick="editRow(2)">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button type="button" onclick="deleteRow(2)">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr id="row-3">
+                                    <td>Q3</td>
+                                    <td>
+                                        <select name="module_3">
+                                            <option value=1>Module 1</option>
+                                            <option value=2>Module 2</option>
+                                            <option value=3>Module 3</option>
+                                            <option value=4>Module 4</option>
+                                            <option value=5>Module 5</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="taxonomy_3">
+                                            <option value="U">Understand</option>
+                                            <option value="A">Apply</option>
+                                            <option value="E">Evaluate</option>
+                                            <option value="K">Knowledge</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="difficulty_level_3">
+                                            <option value="E">Easy</option>
+                                            <option value="M">Medium</option>
+                                            <option value="D">Difficult</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="course_outcome_3">
+                                            <option value="1">CO1</option>
+                                            <option value="2">CO2</option>
+                                            <option value="3">CO3</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input name="marks_3" type="text" class="marks"  placeholder="Enter marks">
+                                      </td>
+                                    <td class="icons">
+                                        <button type="button" onclick="editRow(3)">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button type="button" onclick="deleteRow(3)">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+    
+                            </table>
+                            <input type="hidden" name="total_rows" id="totalRows" value="3">
+                            <button type="submit" name="generate_question" class="button-59" role="button">Generate Question</button>
+                        </div>
+                    </form>
+            
+
+
+                    <div class="table-data__tool">
+                        <div style="display: flex; justify-content: flex-end;">
+                        <div class="table-data__tool-left">
+                          <button class="fil">
+                            <span>
+                              <i class="fa-solid fa-grip-vertical fa-lg" style="color: #0bd022;"></i>
+                            </span> Filter
+                          </button>
+                          <p class="button-37" role="button" onclick="addQuestionRow()">
+                            <span><i class="fa-solid fa-square-plus fa-xl" style="color: #fbfcfb;"></i>
+                             </i><span style="padding-left: 8px;">Add Question</span>
+                            <!-- </span> Add Question -->
+                            </p>
+                        </div>
+                    </div>
+                    <form action="/export" method="post">
+                        {% csrf_token %} 
+                        <div style="display: flex; justify-content: flex-end;">
+                          <div class="table-data__tool-right">
+                            <button class="bu" title="Export"  type="submit" name="export">Export <span style="padding-left: 8px;"><i class="fa fa-download"></i></span></button>
+                          </div>
+                        </div>
+                    </form>
+                      </div>
+                         
+    
+                  
+                </div>
+            </section> 
+        
+            </div>
+        </section>
+    <script>
+        // Get the selected options from the query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const checkboxValue = urlParams.get('checkbox');
+        const dropdown1Value = urlParams.get('dropdown1');
+        const dropdown2Value = urlParams.get('dropdown2');
+
+        // Update the content of the resultDiv
+        document.getElementById('checkboxValue').innerText = checkboxValue;
+        document.getElementById('dropdown1Value').innerText = dropdown1Value;
+        document.getElementById('dropdown2Value').innerText = dropdown2Value;
+    </script>
+    
+
+    <script src="{% static 'script.js' %}"></script>
+
+
+
+    
+</body>
+</html>

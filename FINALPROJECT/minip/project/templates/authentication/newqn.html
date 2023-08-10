@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Form</title>
+  <link rel="stylesheet" href="{% static 'newqn.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Question Form</h1>
+    
+    <form action="{% url 'add_questions' %}" method="post" id="myForm">
+            {% csrf_token %}
+            
+    <table id="questionTable">
+      <tr>
+        <th>Question</th>
+      </tr>
+      <tr>
+        <td>
+          <input name="question_1"  class="question-input" placeholder="Enter your question">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table class="nested-table">
+            <tr>
+              <td>Taxonomy</td>
+              <td>Module</td>
+              <td>Course Outcome</td>
+              <td>Difficulty Level</td>
+              <td>Marks</td>
+            </tr>
+            <tr>
+              <td>
+                <select class="select-box" name="taxonomy_1">
+                  <option value="">Select taxonomy</option>
+                  <option value="K">Knowledge</option>
+                  <option value="E">Evaluation</option>
+                  <option value="A">Apply</option>
+                  <option value="U">Understand</option>
+                </select>
+              </td>
+              <td>
+                <select class="select-box" name="Mod_1">
+                  <option value="">Select module</option>
+                  <option value="1">Module 1</option>
+                  <option value="2">Module 2</option>
+                  <option value="3">Module 3</option>
+                  <option value="4">Module 4</option>
+                  <option value="5">Module 5</option>
+                </select>
+              </td>
+              <td>
+                <select class="select-box" name="CO_1">
+                  <option value="">Select course outcome</option>
+                  <option value="1">CO1</option>
+                  <option value="2">CO2</option>
+                  <option value="3">CO3</option>
+                  <option value="4">CO4</option>
+                  <option value="5">CO5</option>
+                </select>
+              </td>
+              <td>
+                <select class="select-box" name="Diff_1">
+                  <option value="">Select Difficulty Level</option>
+                  <option value="E">Easy</option>
+                  <option value="M">Medium</option>
+                  <option value="H">Hard</option>
+                </select>
+              </td>
+         
+                <td>
+                  <input name="marks_1" type="text" class="marks" placeholder="Enter marks">
+                </td>
+              
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+
+
+
+
+
+
+      <input type="hidden" name="total_rows" id="totalRows" value="1">
+      <p id="addQuestionBtn" class="custom-button">Add Question</p>
+    </table>
+    </form>
+  </div>
+  <script src="{% static 'newqn.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  text-align: center;
+}
+
+button {
+  display: block;
+  width: 20%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 10px auto; /* Center align the button */
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#questionTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#questionTable th, #questionTable td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.question-input {
+  width: 99%;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.select-box {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+#addQuestionBtn {
+  display: block;
+  margin: 10px auto;
+  width: 20%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Add this CSS for the new question row */
+.question-row td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.nested-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.nested-table th,
+.nested-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.nested-cell {
+  vertical-align: top;
+}
+.custom-button {
+  display: block;
+  width: 20%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 10px auto; /* Center align the button */
+}

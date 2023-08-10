@@ -1,0 +1,46 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.notification-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.notification-header {
+    text-align: center;
+}
+
+.progress-bar-container {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.progress-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.progress-table th,
+.progress-table td {
+    padding: 10px;
+    text-align: left;
+}
+
+.progress-table th {
+    background-color: #555;
+}
+
+.progress-table td.completed {
+    color: #00ff00;
+}
+
+.progress-table td.pending {
+    color: #ffaa00;
+}

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Selection page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      background-color: #ade7e4;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .header h1, .header h2 {
+      margin: 0;
+      padding: 0;
+      color: #01053f;
+      text-align: center;
+      
+    }
+
+    .button-checkbox {
+      display: inline-block;
+      margin: 5px;
+    }
+
+    .button-checkbox label {
+      width: 40px;
+      height: 40px;
+      background-color: #13aaa5; /* Green */
+      border: none;
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+      color: white;
+      padding : 40px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 22px;
+      margin: 8px 35px;
+      margin-bottom: 50px;
+      cursor: pointer;
+      border-radius: 50%;
+      text-shadow: 1px 3px 2px rgba(0, 0, 0, 0.5);
+      
+    }
+
+    .button-checkbox input[type="checkbox"] {
+      display: none;
+    }
+
+    .button-checkbox input[type="checkbox"]:checked + label {
+      background-color: #0b1a9c;
+    }
+
+   
+    .dropdown label {
+      display: block;
+      margin-bottom: 5px;
+      color: #272727;
+      
+    }
+
+    .dropdown select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background-color: #f8f8f8;
+      font-size: 14px;
+    }
+
+    .submit-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-top: 40px;
+     
+    
+    }
+
+    .submit-button button {
+      padding: 10px 20px;
+      background: linear-gradient(to bottom, #4CAF50, #39883d);
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.3s;
+      width: 200px;
+    }
+
+    .submit-button button:hover {
+      transform: translate3d(0, -2px, 0);
+    }
+
+  </style>
+  <script>
+    function handleCheckboxClick(checkbox) {
+      const checkboxes = document.querySelectorAll('.button-checkbox input[type="checkbox"]');
+      checkboxes.forEach((cb) => {
+        if (cb !== checkbox) {
+          cb.checked = false;
+        }
+      });
+    }
+  </script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+   <script>
+     $(document).ready(function () {
+     $('#inputForm').submit(function (event) {
+         event.preventDefault(); // Prevent form submission
+         var selectedCheckboxes = $('input[name="checkbox"]:checked'); // Get all selected checkboxes
+         var dropdown1 = $('#dropdown1').val(); // Get selected value of Dropdown Option 1
+         var dropdown2 = $('#dropdown2').val(); // Get selected value of Dropdown Option 2
+         
+         if (selectedCheckboxes.length === 1 && dropdown1 && dropdown2) {
+             var selectedCheckbox = selectedCheckboxes.val(); // Get the value of the selected checkbox
+             $.ajax({
+                 type: 'POST',
+                 url: '',
+                 data: {
+                     'checkbox': selectedCheckbox,
+                     'dropdown1': dropdown1,
+                     'dropdown2': dropdown2
+                 },
+                 dataType: 'json',
+                 success: function (response) {
+                     var newContent = response.new_content;
+                     $('#resultDiv').text(newContent); // Update the resultDiv with new content
+                     // Perform any further actions or redirection to a new page here
+                 },
+                 error: function (xhr, errmsg, err) {
+                     console.log(xhr.status + ": " + xhr.responseText);
+                 }
+             });
+         }
+     });
+ });
+ 
+   </script>
+   <!-- Include the Firebase JavaScript SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
+<!-- Initialize the Firebase SDK with your Firebase project credentials -->
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyAB69oSg-KCnbUk_7VJ47DYs8StOEe-sgk",
+    authDomain: "mini-project-d6397.firebaseapp.com",
+    projectId: "mini-project-d6397",
+    // ...other Firebase configuration options
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+
+</head>
+<body>
+  <div class="container">
+    <form action="/updatecontent" method="post">
+      {% csrf_token %} 
+    <div class="header">
+      <h1>Select the Department :</h1>
+      
+    </div>
+
+    <div class="button-checkbox">
+      <input type="checkbox" id="checkbox1" name="checkbox" value="CS" onclick="handleCheckboxClick(this)">
+      <label for="checkbox1">CSE</label>
+    </div>
+    <div class="button-checkbox">
+      <input type="checkbox" id="checkbox2" name="checkbox" value="ME" onclick="handleCheckboxClick(this)">
+      <label for="checkbox2">ME</label>
+    </div>
+    <div class="button-checkbox">
+      <input type="checkbox" id="checkbox3" name="checkbox" value="ECE" onclick="handleCheckboxClick(this)">
+      <label for="checkbox3">EC</label>
+    </div>
+    <div class="button-checkbox">
+      <input type="checkbox" id="checkbox4" name="checkbox" value="EEE" onclick="handleCheckboxClick(this)">
+      <label for="checkbox4">EE</label>
+    </div>
+    <div class="button-checkbox">
+      <input type="checkbox" id="checkbox5" name="checkbox" value="CE" onclick="handleCheckboxClick(this)">
+      <label for="checkbox5">CE</label>
+    </div>
+    <style>
+      .dropdown-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 17px;
+        padding-left: 100px;
+        padding-right: 120px;
+      }
+    
+      .dropdown {
+        display: flex;
+        flex-direction: column;
+      
+    }
+
+      
+    
+      .dropdown label {
+        margin-bottom: 5px;
+      }
+    
+      .submit-button {
+        display: flex;
+        justify-content: center;
+      
+      margin-top: 20px;
+    }
+
+   
+    
+
+
+.button-68 {
+  appearance: none;
+  backface-visibility: hidden;
+  background-color: #27ae60;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 28px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.button-68:hover {
+  background-color: #1e8449;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: .35s;
+}
+
+.button-68:active {
+  transform: translateY(2px);
+  transition-duration: .35s;
+}
+
+.button-68:hover {
+  box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+}
+
+    
+      
+    </style>
+    <div class="header">
+      <h2>Select Semester and Course :</h2>
+    </div>
+    <div class="dropdown-container">
+      <div class="dropdown">
+        <label for="dropdown1"><B>SEMESTER:</B></label>
+        <select id="dropdown1" name="dropdown1">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </select>
+      </div>
+    
+      <div class="dropdown">
+        <label for="dropdown2"><B>COURSE:</B></label>
+        <select id="dropdown2" name="dropdown2">
+          <option value="AAD">AAD</option>
+          <option value="DS">DS</option>
+          <option value="OS">OS</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="submit-button">
+      <button type="submit">Submit</button>
+    </div>
+    </form>
+    
+<button type="submit" class="button-68" role="button"><a href="/signout" style="text-decoration: none; color: inherit;">Log Out</a></button>
+
+
+    
+ 
+  </div>
+</body>
+</html>

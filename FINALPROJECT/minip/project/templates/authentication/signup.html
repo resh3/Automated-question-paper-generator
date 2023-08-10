@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'style1.css' %}">
+</head>
+<body>
+  <div class="container">
+    <form class="signup-form" action="/signup" method="post">
+    {% csrf_token %}    
+      <h2><B>Sign Up here!</B></h2>
+      <input type="text" placeholder="Username" name="username" required>
+      <input type="email" placeholder="Email" name="Email" required>
+      <input type="password" placeholder="Password" name="Password" required>
+      <input type="password" placeholder="Confirm Password" name="Confirm" required>
+      <button class="hover-button" type="submit">Sign Up </button>
+      <p class="already-account">Confirm your account? <a href="signin.html">Login</a></p>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Login</title>
+  <style>
+    body {
+     /* background: linear-gradient(45deg, #fcfeff,#ffffff);*/
+     background-color: #fdfdfd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #2f2b2b;
+    }
+
+    .login-container {
+      width: 800px;
+      height: 390px;
+      background-color: rgba(255, 255, 255, 0.107);
+      position: absolute;
+      transform: translate(-50%,-50%);
+      top: 50%;
+      left: 50%;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255,255,255,0.1);
+      box-shadow: -10px -10px 15px rgba(255, 255, 255, 0.3), 10px 10px 15px rgba(70, 70, 70, 0.15), inset -10px -10px 15px rgba(255, 255, 255, 0.3), inset 10px 10px 15px rgba(70, 70, 70, 0.15);
+      padding: 50px 35px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 50px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    .profile-buttons {
+      display: flex;
+      justify-content: center; /* Added to center the buttons */
+    }
+
+    .profile-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 150px;
+      height: 145px;
+      border-radius: 50%;
+      background-color: #ccc;
+      margin: 20px 130px; /* Adjusted margin */
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow:  rgba(244, 244, 244, 0.16);
+    }
+
+    .profile-button img {
+      width: 104%;
+      height: 110%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .profile-button:hover {
+      background-color: #999;
+    }
+
+    .profile-button span {
+      margin-top: 20px;
+      font-size: 18px;
+      font-family: Arial, sans-serif;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  <div class="login-container">
+    <h1>USER LOGIN</h1>
+    
+    <div class="profile-buttons">
+      <a href="/signinfac" class="profile-button">
+        <img src="{% static 'Images\img.png' %}" alt="User 1">
+        <span>FACULTY</span>
+      </a>
+      
+      <a href="/adsignin" class="profile-button">
+        <img src="{% static 'Images\img.png' %}" alt="User 2">
+        <span>COE</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyAB69oSg-KCnbUk_7VJ47DYs8StOEe-sgk",
+  authDomain: "mini-project-d6397.firebaseapp.com",
+  projectId: "mini-project-d6397",
+  databaseURL: "https://mini-project-d6397.firebaseio.com",
+  storageBucket: "mini-project-d6397.appspot.com",
+  messagingSenderId: "884557626904",
+  appId: "1:884557626904:web:20bef6101d09774a558d6d",
+  measurementId: "G-QCV2G30W9V"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+    <title>Question Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .question-column {
+            max-width: 600px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+
+<body>
+  <form action="{% url 'qbank' %}" method="post">
+       
+  <div class="container">
+    
+    <h1>AAD Question Bank</h1>
+    <table>
+        <tr>
+            {% csrf_token %}
+            <th>Questions</th>
+            <th>Module</th>
+            <th>Taxonomy</th>
+            <th>CO</th>
+            <th>Difficulty Level</th>
+            <th>Marks</th>
+        </tr>
+
+        <!-- Sample data (Replace this with data fetched from Firebase and Django backend) -->
+        {% for data in question %}
+        <tr>
+            <td class="question-column">{{ data.question }}</td>
+            <td>{{ data.Mod }}</td>
+            <td>{{ data.taxonomy }}</td>
+            <td>{{ data.CO }}</td>
+            <td>{{ data.Diff }}</td>
+            <td>{{ data.marks }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</body>
+</html>

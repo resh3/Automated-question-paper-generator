@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'main.css' %}"> 
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="logoo.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="logoo.jpg">
+  <link rel="mask-icon" href="logoo.jpg" >
+
+    <link rel="stylesheet" href="{% static 'pro.css' %}">
+    <script src="https://kit.fontawesome.com/b5f405ef21.js" crossorigin="anonymous"></script>
+  
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>Profile</title> 
+</head>
+<body>
+    
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="logoo.jpg" alt="">
+            </div>
+
+            <span class="logo_name">QuestGen</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="index.html">
+                    <i class="uil uil-estate" title="view Dashboard"></i>
+                    <span class="link-name">Home</span>
+                </a></li>
+                <li><a href="pro.html" title="view profile">
+                    <i class="uil uil-user"></i>
+                    <span class="link-name" >Profile</span>
+                </a></li>
+                <li><a href="index.html" title="View Question Bank">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name" >Question Bank</span></a>
+                </a></li>
+                <li><a href="C:\Users\preit\OneDrive\Documents\MiniProject\faculty dashboard\Academic Calendar-S4S6-2023.pdf" target="_blank">
+                    <i class="uil uil-calender" title="view Academic Calendar"></i>
+                    <span class="link-name" >Calendar</span>
+                </a></li>
+                
+                <li><a href="#" title="view Email notifications">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name" >Notifications</span>
+                </a></li>
+                <li><a href="select.html" title="Go back to select page">
+                    <i class="uil uil-share"></i>
+                    <span class="link-name" >Selection Page</span>
+                </a></li>
+            </ul>
+            
+            <ul class="logout-mode">
+                <li><a href="signin.html">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name" title="log out">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Dark Mode</span>
+                </a>
+
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+
+
+            
+        </div>
+    </nav>
+
+
+    <section class="is-hero-bar">
+  <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+    <h1 class="title"><i class="fa-solid fa-circle-user fa-lg" style="color: #0E4BF1;"></i>
+      Profile
+    </h1>
+    <a href="index.html"  target="_blank" class="button blue"> 
+      <span class="icon"><i class="fa fa-clipboard"></i></span>
+      <span>View Account</span>
+    </a>
+   
+  </div>
+</section>
+
+  <section class="section main-section">
+
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
+ 
+      <div class="profilecard">
+        <header class="card-header">
+          <p class="card-header-title">
+            <span class="icon"><i class="fa-sharp fa-solid fa-user"></i></span>
+            Profile
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="image w-48 h-48 mx-auto">
+            <img src="{%static 'pro.png'%}" alt="Avatar" class="rounded-full">
+          </div>
+          <hr>
+          <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+              <input type="text" readonly="" value="username" class="input is-static">
+            </div>
+          </div>
+          <hr>
+          <div class="field">
+            <label class="label">E-mail</label>
+            <div class="control">
+              <input type="text" readonly="" value="user@example.com" class="input is-static">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          <span class="icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+          Change Password</a>
+        
+      </header>
+      <div class="card-content">
+        <form>
+          <div class="field">
+            <label class="label">Current password</label>
+            <div class="control">
+              <input type="password" name="password_current" autocomplete="current-password" class="input" required="">
+            </div>
+            <p class="help">Required. Your current password</p>
+          </div>
+          <hr>
+          <div class="field">
+            <label class="label">New password</label>
+            <div class="control">
+              <input type="password" autocomplete="new-password" name="password" class="input" required="">
+            </div>
+            <p class="help">Required. New password</p>
+          </div>
+          <div class="field">
+            <label class="label">Confirm password</label>
+            <div class="control">
+              <input type="password" autocomplete="new-password" name="password_confirmation" class="input" required="">
+            </div>
+            <p class="help">Required. New password one more time</p>
+          </div>
+          <hr>
+          <div class="field">
+            <div class="control">
+              <button type="submit" class="button green">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  </body></html>
+

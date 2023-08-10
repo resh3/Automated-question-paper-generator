@@ -1,0 +1,162 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  
+    <link rel="stylesheet" href="{%static 'admin.css' %}">
+    
+    <script src="https://kit.fontawesome.com/b5f405ef21.js" crossorigin="anonymous"></script>
+  
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>Assign Teachers to Generate Questions</title>
+    <style>
+        body {
+            background-color: #333;
+        }
+
+        table {
+            width: 90%;
+            background-color: #FFF;
+            color: #333;
+            margin-top: 15%;
+            margin-left: 5%;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <nav> <div class="logo">
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="qglogo.png" alt="">
+            </div>
+
+            <span class="logo_name">QuestGen</span>
+        </div></div>
+
+        <div class="menu-items">
+            <div class="menu1">
+            <ul class="nav-links">
+                <li><a href="admin.html">
+                    <i class="uil uil-estate" title="view Dashboard"></i>
+                    <span class="link-name">Home</span>
+                </a></li>
+                
+               
+                <li><a href="Academic Calendar-S4S6-2023.pdf" target="_blank">
+                    <i class="uil uil-calender" title="view Academic Calendar"></i>
+                    <span class="link-name" >Calendar</span>
+                </a></li>
+                
+                <li><a href="#" title="view Email notifications">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name" >Notifications</span>
+                </a></li>
+                <li><a href="assign.html" title="Send Notifications to Faculty ">
+                    <i class="uil uil-share"></i>
+                    <span class="link-name" >Assign Teacher</span>
+                </a></li>
+            </ul>
+            </div><br>
+            
+            <ul class="logout-mode"><div class="menu2">
+                <li><a href="signin.html">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name" title="log out">Logout</span>
+                </a></li>
+
+                
+
+                
+            </li>
+            </ul></div>
+
+
+            
+        </div>
+    </nav>
+  <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <!-- <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div> -->
+
+            <a href="#" class="profile-button">
+                <img src="profile.png" alt="" >
+            </a>
+        
+             <div class="dropdown">
+                <button class="profile-button"> 
+                 <i class="fa-solid fa-caret-down fa-lg" style="color:white"></i>
+                 </button>
+                  <div class="dropdown-content">
+                    <a href="#">view profile</a>
+                   <a href="#">notifications</a>
+                  <a href="#">Sign out</a>
+                   </div>
+             </div> 
+            </div>
+            </div>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3">Assign Teachers to Generate Questions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="teacher">Teacher:</label>
+                </td>
+                <td>
+                    <input type="text" id="teacher" name="teacher">
+                </td>
+                <td>
+                    <label for="subject">Subject:</label>
+                </td>
+                <td>
+                    <input type="text" id="subject" name="subject">
+                </td>
+                <td>
+                    <label for="exam">Exam:</label>
+                </td>
+                <td>
+                    <input type="text" id="exam" name="exam">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align: center;">
+                    <input type="submit" value="Send Task" class="submit-button">
+                </td>
+            </tr>
+        </tbody>
+    </table></section>
+</body>
+</html>

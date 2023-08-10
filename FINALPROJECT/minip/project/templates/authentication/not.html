@@ -1,0 +1,37 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Notification</title>
+    <link rel="stylesheet" href="{%static 'not.css'%}">
+</head>
+<body>
+    <div class="notification-container">
+        <div class="notification-header">
+            <h1>Admin Notifications</h1>
+        </div>
+        <div class="progress-bar-container">
+            <h2>Progress Bar</h2>
+            <table class="progress-table">
+                <tr>
+                    <th>Teacher</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Teacher A</td>
+                    <td class="completed">Received</td>
+                </tr>
+                <tr>
+                    <td>Teacher B</td>
+                    <td class="pending">Pending</td>
+                </tr>
+                <tr>
+                    <td>Teacher C</td>
+                    <td class="completed">Received</td>
+                </tr>
+                <!-- Add more rows for other teachers -->
+            </table>
+        </div>
+    </div>
+</body>
+</html>

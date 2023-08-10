@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  
+    <link rel="stylesheet" href="{%static 'admin.css'%}">
+    
+    <script src="https://kit.fontawesome.com/b5f405ef21.js" crossorigin="anonymous"></script>
+  
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+<!-- <span><img src="qglogo.png" alt=""></span> -->
+    <title>Admin Dashboard</title> 
+   
+
+
+</head>
+<body>
+    <script>
+        function myFunction() {
+          document.getElementById("demo").innerHTML = "hi";
+        }
+        </script>
+    <nav> <div class="logo">
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="qglogo.png" alt="">
+            </div>
+
+            <span class="logo_name">QuestGen</span>
+        </div></div>
+
+        <div class="menu-items">
+            <div class="menu1">
+            <ul class="nav-links">
+                <li><a href="admin.html">
+                    <i class="uil uil-estate" title="view Dashboard"></i>
+                    <span class="link-name">Home</span>
+                </a></li>
+                
+               
+                <li><a href="Academic Calendar-S4S6-2023.pdf" target="_blank">
+                    <i class="uil uil-calender" title="view Academic Calendar"></i>
+                    <span class="link-name" >Calendar</span>
+                </a></li>
+                
+                <li><a href="/notification" title="view Email notifications">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name" >Notifications</span>
+                </a></li>
+                <li><a href="/assign" title="Send Notifications to Faculty ">
+                    <i class="uil uil-share"></i>
+                    <span class="link-name" >Assign Teacher</span>
+                </a></li>
+            </ul>
+            </div><br>
+            
+            <ul class="logout-mode"><div class="menu2">
+                <li><a href="signin.html">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name" title="log out">Logout</span>
+                </a></li>
+
+                
+
+                
+            </li>
+            </ul></div>
+
+
+            
+        </div>
+    </nav>
+  <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+
+            <a href="#" class="profile-button">
+                <img src="profile.png" alt="" >
+            </a>
+        
+             <div class="dropdown">
+                <button class="profile-button"> 
+                 <i class="fa-solid fa-caret-down fa-lg" style="color:white"></i>
+                 </button>
+                  <div class="dropdown-content">
+                    <a href="#">view profile</a>
+                   <a href="#">notifications</a>
+                  <a href="#">Sign out</a>
+                   </div>
+             </div> 
+            </div>
+            </div>
+       
+<hr style="height:1px;border-width:0;color:rgb(255, 255, 255)">
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text">Admin Dashboard</span>
+                </div>
+
+                <div class="boxes">
+                    <button class="box box1" onclick="window.location.href='/cate'">
+                        <i class="fa-brands fa-dropbox"></i>
+                        <span class="text"><b>Generate</b></span>
+                        <span class="number">Question Paper</span>
+                    </button>
+                  <form action="/quesgen" method="post" class="box box2" style="width:30% ;">
+                    {%csrf_token%}
+                    <button >
+                        <i class="uil uil-books"></i>
+                        <span class="text">View</span>
+                        <span class="number">Generated Question Papers</span>
+                    </button>
+                </form>
+                </div>
+                
+                
+                
+            </div><div class="table-data__tool">
+                <div style="display: flex; justify-content: flex-end;">
+                <div class="table-data__tool-left">
+                 
+                  <button  class="button-37" role="button">
+                    <span><i class="uil uil-comments fa-xl" style="color: #000000;"></i>
+                     </i><span style="padding-left: 8px;"></span>
+                    </span><b>Notifications</b> </button>
+                  </button>
+                </div>
+            </div>
+                <!-- <div style="display: flex; justify-content: flex-end;"> -->
+                  
+                </div>
+         
+            <div class="activity">   
+                <div class="title">
+                    <i class="uil uil-clock-three"></i>
+                    <span class="text">Progress Bar</span>
+                </div>
+
+                <div class="activity-data">
+                    <div class="table-container">
+                        <br><br> <br><br> <br><br> <br><br> 
+                        <table class="custom-table" >
+                            <tr>
+                                
+                                <th>Faculty Members</th>
+                                <th>Recieved</th>
+                                <th>Pending</th>
+                               
+                               
+                            </tr>
+                           <tr>
+                               <tr>
+                                <td>Teacher1</td>
+                                <td>
+                                    <img src="tick.png" alt="" style="max-width: 30px;">
+                                    
+                                </td>
+                                <td>
+                                    <img src="cross.png" alt="" style="max-width: 30px;">
+                                    
+                                </td>
+                                
+                               
+                            </tr>
+                            <tr>
+                                <tr>
+                                 <td>Teacher2</td>
+                                 <td>
+                                    <img src="cross.png" alt="" style="max-width: 30px;">
+                                 </td>
+                                 <td>
+                                    <img src="tick.png" alt="" style="max-width: 30px;">
+                                 </td>
+                                 
+                                
+                             </tr>
+                           
+                 
+
+                        </table><br>
+                        <button class="button-59" role="button">View Progress Bar</button>
+                    
+
+                     
+                    
+                
+            </div>
+        
+       
+    <div class="calendar">
+        <div class="calendar-header">
+            <span class="month-picker" id="month-picker">July</span>
+            <div class="year-picker">
+                <span class="year-change" id="prev-year">
+                    <pre><</pre>
+                </span>
+                <span id="year">2023</span>
+                <span class="year-change" id="next-year">
+                    <pre>></pre>
+                </span>
+            </div>
+        </div>
+        <div class="calendar-body">
+            <div class="calendar-week-day">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="calendar-days"></div>
+        </div>
+       
+        <div class="month-list"></div>
+    </div>
+    <script src="{% static 'app.js' %}"></script>
+
+</div>
+</section>
+</div>
+<script src="{% static 'script.js' %}"></script>
+
+</body>
+</html>
